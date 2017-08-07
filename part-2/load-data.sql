@@ -3,5 +3,14 @@ COPY grocery_items (name,price,section) FROM '/Users/zubairahmed/projects/phase-
 INSERT INTO shoppers (name)
 VALUES ('Punit'), ('Jason'), ('Samira'), ('Thunder'), ('BoyManBear');
 
-INSERT INTO orders (item_id, shopper_id)
-VALUES (2, 3), (3, 3), (4, 3), (1, 2), (2, 2), (6, 4);
+INSERT INTO orders (id, item_id, shopper_id)
+VALUES
+  (1, 2, 3),
+  (1, 3, 3),
+  (1, 4, 3),
+  (2, 1, 3),
+  (2, 2, 3),
+  (3, 6, 4),
+  (4, 10, 1),
+  (5, 9, 5),
+  (5, 17, 5);
