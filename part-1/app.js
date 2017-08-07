@@ -6,7 +6,7 @@ const concat = require('./routes/concat');
 const port = 3000;
 
 app.use('/api/days', days);
-app.use('/api/concat', concat);
+app.use('/api/array/concat', concat);
 
 app.listen(port, () => {
   console.log('Server is listening on', port);
