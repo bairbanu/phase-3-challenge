@@ -1,0 +1,11 @@
+{
+  "name": "part-1",
+  "version": "1.0.0",
+  "description": "To tackle the challenge set out in Part 1 of Learners Guild Phase 3 Challenge",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zubair Ahmed",
+  "license": "MIT"
+}
