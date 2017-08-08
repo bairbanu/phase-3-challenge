@@ -61,12 +61,8 @@ function showCartItems() {
       itemContainer.appendChild(itemCost);
 
       //insert into right place
-
       const placeParent = document.getElementsByClassName('item-container')[0];
       placeParent.appendChild(itemContainer);
-      // const placeCount = placeParent.childNodes.length;
-      //
-      // placeParent.insertBefore(itemContainer, placeParent.childNodes[placeCount - 2]);
     })
   }
 }
