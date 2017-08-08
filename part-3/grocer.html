@@ -77,10 +77,19 @@
       </div>
 
       <div id="my-modal" class="modal">
-        <div class="modal-content">
-          <h1>Cart</h1>
-          <span class="close">&times;</span>
-          <p>Some text in the Modal..</p>
+        <div class="modal-column">
+          <div class="modal-row">
+            <h1>Cart</h1>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-row">
+            <p>Item Number 1</p>
+            <p>$20.44</p>
+          </div>
+          <div class="modal-row">
+            <button type="button" onclick="clearCart()">Clear</button>
+            <p>Total <span class="total-cost">$0</span></p>
+          </div>
         </div>
       </div>
 

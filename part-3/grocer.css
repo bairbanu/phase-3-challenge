@@ -128,7 +128,10 @@ body {
   background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
+.modal-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
@@ -136,9 +139,13 @@ body {
   width: 80%;
 }
 
+.modal-row {
+  display: flex;
+  justify-content: space-between;
+}
+
 .close {
   color: #aaaaaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
 }

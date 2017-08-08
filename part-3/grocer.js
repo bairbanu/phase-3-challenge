@@ -1,6 +1,6 @@
 let cartCount = 0;
 let total = 0;
-const items = {};
+let items = {};
 
 function addToCart(element) {
   const cart = document.getElementById('cart-item-count');
@@ -19,30 +19,35 @@ function processTotal(cost) {
   total = Number(total) + Number(value);
   total = total.toFixed(2);
 }
-// function showModal() {
-//   // Get the modal
-//   const modal = document.getElementById('my-modal');
-//
-//   // Get the button that opens the modal
-//   const btn = document.getElementById("myBtn");
-//
-//   // Get the <span> element that closes the modal
-//   const span = document.getElementsByClassName("close")[0];
-//
-//   // When the user clicks on the button, open the modal
-//   btn.onclick = function() {
-//       modal.style.display = "block";
-//   }
-//
-//   // When the user clicks on <span> (x), close the modal
-//   span.onclick = function() {
-//       modal.style.display = "none";
-//   }
-//
-//   // When the user clicks anywhere outside of the modal, close it
-//   window.onclick = function(event) {
-//       if (event.target == modal) {
-//           modal.style.display = "none";
-//       }
-//   }
-// }
+
+function showModal() {
+  const modal = document.getElementById('my-modal');
+  const btn = document.getElementById('cart-item-count');
+  const close = document.getElementsByClassName('close')[0];
+  const totalCost = document.getElementsByClassName('total-cost')[0];
+
+  modal.style.display = 'block';
+  totalCost.innerHTML = `$${total}`;
+
+  close.onclick = function() {
+      modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = 'none';
+      }
+  }
+}
+
+function clearCart() {
+  items = {};
+  total = 0;
+  cartCount = 0;
+
+  const modal = document.getElementById('my-modal');
+  modal.style.display = 'none';
+
+  const cart = document.getElementById('cart-item-count');
+  cart.innerHTML = `(${cartCount})`;
+}
