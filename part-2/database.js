@@ -15,7 +15,7 @@ function shopperOrders(shopper_id) {
   return db.any(`SELECT orders.id, SUM(CAST(grocery_items.price AS REAL))
     FROM orders
     INNER JOIN grocery_items ON orders.item_id = grocery_items.id
-    WHERE shopper_id = 3
+    WHERE shopper_id = $1
     GROUP BY orders.id`, [shopper_id]);
 }
 
