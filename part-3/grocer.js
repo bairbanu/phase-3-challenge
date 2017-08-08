@@ -11,7 +11,6 @@ function addToCart(element) {
   const itemCost = element.parentNode.childNodes[3].innerHTML;
   items.push([itemName, itemCost]);
   processTotal(itemCost);
-  console.log(items);
 }
 
 function processTotal(cost) {
@@ -42,28 +41,34 @@ function showModal() {
 }
 
 function showCartItems() {
-  if (items.length !== 0)
-  items.forEach((item) => {
-    // create item row
-    const itemName = document.createElement('p');
-    const itemNameText = document.createTextNode(`${item[0]}`);
-    itemName.appendChild(itemNameText);
+  if (items.length !== 0) {
+    // remove items from DOM before re-rendering
+    removeItemsFromDOM();
 
-    const itemCost = document.createElement('p');
-    const itemCostText = document.createTextNode(`${item[1]}`);
-    itemCost.appendChild(itemCostText);
+    items.forEach((item) => {
+      // create item row
+      const itemName = document.createElement('p');
+      const itemNameText = document.createTextNode(`${item[0]}`);
+      itemName.appendChild(itemNameText);
 
-    const itemContainer = document.createElement('div');
-    itemContainer.classList.add('modal-row');
-    itemContainer.appendChild(itemName);
-    itemContainer.appendChild(itemCost);
+      const itemCost = document.createElement('p');
+      const itemCostText = document.createTextNode(`${item[1]}`);
+      itemCost.appendChild(itemCostText);
 
-    //insert into right place
-    const placeParent = document.getElementsByClassName('modal-column')[0];
-    const placeCount = placeParent.childNodes.length;
+      const itemContainer = document.createElement('div');
+      itemContainer.classList.add('modal-row', 'item-row');
+      itemContainer.appendChild(itemName);
+      itemContainer.appendChild(itemCost);
 
-    placeParent.insertBefore(itemContainer, placeParent.childNodes[placeCount - 2]);
-  })
+      //insert into right place
+
+      const placeParent = document.getElementsByClassName('item-container')[0];
+      placeParent.appendChild(itemContainer);
+      // const placeCount = placeParent.childNodes.length;
+      //
+      // placeParent.insertBefore(itemContainer, placeParent.childNodes[placeCount - 2]);
+    })
+  }
 }
 
 function clearCart() {
@@ -76,4 +81,14 @@ function clearCart() {
 
   const cart = document.getElementById('cart-item-count');
   cart.innerHTML = `(${cartCount})`;
+
+  removeItemsFromDOM();
+}
+
+function removeItemsFromDOM() {
+  const cartItems = document.getElementsByClassName('item-container')[0];
+
+  while (cartItems.hasChildNodes()) {
+    cartItems.removeChild(cartItems.firstChild);
+  }
 }
