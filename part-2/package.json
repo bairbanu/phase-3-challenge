@@ -14,6 +14,7 @@
   "dependencies": {
     "chai": "^4.1.1",
     "mocha": "^3.5.0",
+    "node-print": "0.0.4",
     "pg-promise": "^6.3.7"
   }
 }

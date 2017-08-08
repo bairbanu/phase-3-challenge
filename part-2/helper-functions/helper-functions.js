@@ -1,30 +1,35 @@
+const print = require('node-print');
+
 function listProducts(list) {
-  console.log('| Product Name | Section');
+  const processedList = [];
 
   list.forEach((item) => {
-    console.log(`| ${item.name} | ${process.argv[3]}`);
+    processedList.push({ "Product Name": item.name, "Section": process.argv[3]});
   })
 
+  print.pt(processedList);
   process.exit();
 }
 
 function listOrders(list) {
-  console.log('| Order ID | Total Cost |');
+  const processedList = [];
 
   list.forEach((item) => {
-    console.log(`| ${item.id} | ${item.sum}`);
+    processedList.push({"Order ID": item.id, "Total Cost": item.sum});
   })
 
+  print.pt(processedList);
   process.exit();
 }
 
 function listRealShoppers(list) {
-  console.log('| Shopper Name | Number of Orders');
+  const processedList = [];
 
   list.forEach((item) => {
-    console.log(`| ${item.name} | ${item.count}`);
+    processedList.push({"Shopper Name": item.name, "Number of Orders": item.count});
   })
 
+  print.pt(processedList);
   process.exit();
 }
 
