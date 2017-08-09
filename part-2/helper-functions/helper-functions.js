@@ -1,35 +1,73 @@
-const print = require('node-print');
-
 function listProducts(list) {
-  const processedList = [];
+  const headingLeft = 'Product Name';
+  const headingRight = 'Section';
+  const headingLengthLeft = headingLeft.length;
+  const headingLengthRight = headingRight.length;
+  let longestStringLeft = headingLengthLeft;
+  let longestStringRight = headingLengthRight;
 
   list.forEach((item) => {
-    processedList.push({ "Product Name": item.name, "Section": process.argv[3]});
+    if (item.name.length > longestStringLeft) {
+      longestStringLeft = item.name.length;
+    }
   })
 
-  print.pt(processedList);
+  if (process.argv[3].length > headingLengthRight) longestStringRight = process.argv[3].length;
+
+  console.log('+' + '-'.repeat(longestStringLeft + 2) + '+' + '-'.repeat(longestStringRight + 2) + '+');
+  console.log('| ' + headingLeft + ' '.repeat(longestStringLeft - headingLengthLeft) + ' | ' + headingRight + ' '.repeat(longestStringRight - headingLengthRight) + ' |');
+  console.log('+' + '-'.repeat(longestStringLeft + 2) + '+' + '-'.repeat(longestStringRight + 2) + '+');
+
+  list.forEach((item) => {
+    console.log('| ' + item.name + ' '.repeat(longestStringLeft - item.name.length) + ' | ' + process.argv[3] + ' '.repeat(longestStringRight - process.argv[3].length)  + ' |');
+  })
+
+  console.log('+' + '-'.repeat(longestStringLeft + 2) + '+' + '-'.repeat(longestStringRight + 2) + '+');
+
   process.exit();
 }
 
 function listOrders(list) {
-  const processedList = [];
+  const headingLeft = 'Order ID';
+  const headingRight = 'Total Cost';
+
+  console.log('+' + '-'.repeat(headingLeft.length + 2) + '+' + '-'.repeat(headingRight.length + 2) + '+');
+  console.log('| ' + headingLeft + ' | ' + headingRight + ' |');
+  console.log('+' + '-'.repeat(headingLeft.length + 2) + '+' + '-'.repeat(headingRight.length + 2) + '+');
 
   list.forEach((item) => {
-    processedList.push({"Order ID": item.id, "Total Cost": item.sum});
+    console.log('| ' + item.id + ' '.repeat(headingLeft.length - String(item.id).length) + ' | ' + item.sum + ' '.repeat(headingRight.length - String(item.sum).length)  + ' |');
   })
 
-  print.pt(processedList);
+  console.log('+' + '-'.repeat(headingLeft.length + 2) + '+' + '-'.repeat(headingRight.length + 2) + '+');
+
   process.exit();
 }
 
 function listRealShoppers(list) {
-  const processedList = [];
+  const headingLeft = 'Shopper Name';
+  const headingRight = 'Number of Orders';
+  const headingLengthLeft = headingLeft.length;
+  const headingLengthRight = headingRight.length;
+  let longestStringLeft = headingLengthLeft;
+  let longestStringRight = headingLengthRight;
 
   list.forEach((item) => {
-    processedList.push({"Shopper Name": item.name, "Number of Orders": item.count});
+    if (item.name.length > longestStringLeft) {
+      longestStringLeft = item.name.length;
+    }
   })
 
-  print.pt(processedList);
+  console.log('+' + '-'.repeat(longestStringLeft + 2) + '+' + '-'.repeat(longestStringRight + 2) + '+');
+  console.log('| ' + headingLeft + ' '.repeat(longestStringLeft - headingLengthLeft) + ' | ' + headingRight + ' '.repeat(longestStringRight - headingLengthRight) + ' |');
+  console.log('+' + '-'.repeat(longestStringLeft + 2) + '+' + '-'.repeat(longestStringRight + 2) + '+');
+
+  list.forEach((item) => {
+    console.log('| ' + item.name + ' '.repeat(longestStringLeft - item.name.length) + ' | ' + item.count + ' '.repeat(longestStringRight - item.count.length)  + ' |');
+  })
+
+  console.log('+' + '-'.repeat(longestStringLeft + 2) + '+' + '-'.repeat(longestStringRight + 2) + '+');
+
   process.exit();
 }
 
